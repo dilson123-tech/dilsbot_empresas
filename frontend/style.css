@@ -1,0 +1,96 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilo geral da página */
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  border-radius: 12px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #0077cc;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Inputs e botão */
+textarea {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: vertical;
+  font-size: 1rem;
+  min-height: 100px;
+}
+
+button {
+  background-color: #0077cc;
+  color: white;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+/* Bloco da resposta */
+#resposta {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #e6f2ff;
+  border-left: 4px solid #0077cc;
+  border-radius: 8px;
+  font-style: italic;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  form {
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  textarea,
+  button {
+    font-size: 1rem;
+  }
+}

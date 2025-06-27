@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: dilsbot-api
+    env: python
+    plan: free
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "bash backend/start.sh"
+    envVars:
+      - key: OPENAI_API_KEY
+        value: sua-chave-aqui
+    autoDeploy: true
+    region: oregon
