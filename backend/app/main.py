@@ -1,10 +1,11 @@
-from openai import OpenAI
-from pydantic import BaseModel
 from fastapi import FastAPI
+from pydantic import BaseModel
+from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = FastAPI()
@@ -18,7 +19,7 @@ async def responder(mensagem: Mensagem):
         resposta = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "Você é um assistente profissional que responde perguntas de empresas sobre o serviço oferecido."},
+                {"role": "system", "content": "Você é um assistente profissional que responde perguntas de empresas sobre seus serviços."},
                 {"role": "user", "content": mensagem.mensagem}
             ]
         )
