@@ -1,20 +1,27 @@
-from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
+from openai import OpenAI
+from pydantic import BaseModel
+from fastapi import FastAPI
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = FastAPI()
 
-# Liberar CORS pra testes externos tipo ReqBin
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+class Mensagem(BaseModel):
+    mensagem: str
 
 @app.post("/pergunta")
-async def responder(request: Request):
-    body = await request.json()
-    mensagem = body.get("mensagem")
-
-    # Resposta fake só pra teste
-    return {"resposta": f"Recebi sua mensagem: {mensagem}"}
+async def responder(mensagem: Mensagem):
+    try:
+        resposta = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "Você é um assistente profissional que responde perguntas de empresas sobre o serviço oferecido."},
+                {"role": "user", "content": mensagem.mensagem}
+            ]
+        )
+        return {"resposta": resposta.choices[0].message.content}
+    except Exception as e:
+        return {"erro": str(e)}

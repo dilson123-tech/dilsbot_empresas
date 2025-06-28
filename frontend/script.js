@@ -9,12 +9,12 @@ form.addEventListener('submit', async (e) => {
   respostaDiv.innerHTML = "<em>🤖 Pensando na melhor resposta pra sua empresa...</em>";
 
   try {
-    const resposta = await fetch('http://127.0.0.1:8000/chat', {
+    const resposta = await fetch('http://127.0.0.1:8000/pergunta', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ mensagem }),
+      body: JSON.stringify({ mensagem }), // <<---- esse nome tem que bater com o Pydantic do back!
     });
 
     const data = await resposta.json();
@@ -25,6 +25,6 @@ form.addEventListener('submit', async (e) => {
 });
 
 limparBtn.addEventListener('click', () => {
-  document.getElementById('mensagem').value = '';
-  respostaDiv.innerHTML = '';
+  document.getElementById('mensagem').value = "";
+  respostaDiv.innerHTML = "";
 });

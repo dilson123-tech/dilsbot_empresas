@@ -1,26 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DilsBot Empresas</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DilsBot Empresas 🤖</title>
+  <link rel="stylesheet" href="style.css"> <!-- Aqui está o CSS -->
 </head>
 <body>
-  <header>
-    <h1>🤖 DilsBot Empresas</h1>
-    <p>IA prática para acelerar resultados reais no seu negócio</p>
-  </header>
-
+  <h1>DilsBot Empresas 🤖</h1>
   <form id="chatForm">
-    <label for="mensagem">“Como a IA pode ajudar minha empresa?”</label>
-    <textarea id="mensagem" name="mensagem" required></textarea>
-    <button type="submit">💡 Enviar</button>
-    <button type="button" id="limparBtn" class="secundario">🧹 Limpar</button>
+    <label for="mensagem">Digite sua pergunta:</label><br>
+    <input type="text" id="mensagem" name="mensagem" required />
+    <button type="submit">Enviar</button>
+    <button type="button" id="limparBtn">Limpar</button>
   </form>
-
-  <div id="resposta"></div>
+  <div id="resposta" style="margin-top: 20px;"></div>
 
   <script src="script.js"></script>
 </body>
