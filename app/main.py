@@ -1,10 +1,17 @@
+import os
 from openai import OpenAI
 from pydantic import BaseModel
 from fastapi import FastAPI
-from dotenv import load_dotenv
-import os
 
-load_dotenv()
+# Só carrega o .env se estiver rodando localmente
+if os.getenv("RAILWAY_ENVIRONMENT") is None:
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except:
+        pass
+
+# Inicializa o cliente OpenAI
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = FastAPI()
@@ -18,7 +25,10 @@ async def responder(mensagem: Mensagem):
         resposta = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "Você é um assistente profissional que responde perguntas de empresas sobre o serviço oferecido."},
+                {
+                    "role": "system",
+                    "content": "Você é um assistente profissional que responde perguntas de empresas sobre o serviço oferecido."
+                },
                 {"role": "user", "content": mensagem.mensagem}
             ]
         )
